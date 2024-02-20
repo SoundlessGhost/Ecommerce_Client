@@ -1,0 +1,31 @@
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.AnchorContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.websiteName {
+  font-weight: bold;
+  font-size: 25px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+.AnchorContainer {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+.AnchorContainer a:hover {
+  text-decoration:underline;
+}
+.AnchorContainer a {
+    font-size: 18px;
+}
+.dropDownContainer{
+  position: absolute;
+  top: 20px;
+  left: -30px;
+}

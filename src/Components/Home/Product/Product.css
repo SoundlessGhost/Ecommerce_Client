@@ -1,0 +1,45 @@
+.sellPost {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-style: italic;
+}
+.sellPost span {
+  font-size: 30px;
+}
+.sellPost p {
+  font-size: 40px;
+}
+.sellPost h5 {
+  color: red;
+}
+.productContainer {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+.discountClass {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+.imagesText {
+  display: flex;
+  justify-content: center;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-size: 40px;
+  font-style: italic;
+}
+.container {
+  overflow-y: scroll;
+  position: relative;
+}
+
+.fixed-image {
+  position: fixed;
+  top: 600px;
+  width: 1440px;
+  height: 520px;
+  z-index: -1;
+}
+.content {
+  padding-top: 300px;
+}
