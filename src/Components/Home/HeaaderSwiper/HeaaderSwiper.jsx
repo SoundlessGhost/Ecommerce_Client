@@ -1,14 +1,23 @@
-import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/navigation";
+import { Autoplay } from "swiper/modules";
 
 const HeaaderSwiper = () => {
   return (
     <div>
-      <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
+      <Swiper
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        navigation={true}
+        loop={true}
+        modules={[Navigation,Autoplay]}
+        className="mySwiper"
+      >
         <SwiperSlide>
           <img
             className="h-[820px] w-[1440px]"

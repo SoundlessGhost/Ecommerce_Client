@@ -1,10 +1,18 @@
-import React from "react";
+/* eslint-disable react/prop-types */
+
+import { Link } from "react-router-dom";
 
 const SingleProduct = ({ item }) => {
-  const { productName, category, img } = item;
+  const { productName, category, img, _id } = item;
   return (
     <div className="productContainer">
-      <img className="h-[367px] w-[305px] rounded-md" src={img} alt="" />
+      <Link to={`/product/${_id}`}>
+        <img
+          className="h-[367px] w-[305px] cursor-pointer rounded-md"
+          src={img}
+          alt=""
+        />
+      </Link>
       <div className="mb-8 mt-4 px-2">
         <p>Product Name - {productName}</p>
         <p>Category - {category}</p>

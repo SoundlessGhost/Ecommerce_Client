@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import { useState } from "react";
 import SinglePdt from "../SinglePdt/SinglePdt";
 
 const RelativePdt = () => {
@@ -15,7 +15,7 @@ const RelativePdt = () => {
   return (
     <div className="grid grid-cols-4">
       {products.slice(8, 12).map((item) => (
-        <SinglePdt item={item}></SinglePdt>
+        <SinglePdt key={item._id} item={item}></SinglePdt>
       ))}
     </div>
   );

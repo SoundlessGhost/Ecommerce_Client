@@ -1,12 +1,11 @@
-import React from "react";
+
 import HeaaderSwiper from "../HeaaderSwiper/HeaaderSwiper";
 import Product from "../Product/Product";
 import ImgParallax from "../Parallax/Parallax";
 import Carousel from "../Carousel/Carousel";
 import RelativePdt from "../RelativePdt/RelativePdt";
-import Footer from "../../Pages/Footer/Footer";
 import Blogs from "../Blogs/Blogs";
-import CopyComponents from "../CopyComponents/CopyComponents";
+import ScrollToTopButton from "../ScrollTop/ScrollTop";
 
 const Home = () => {
   return (
@@ -24,9 +23,8 @@ const Home = () => {
           <button className="border-0 border-b-4">See More</button>
         </div>
       </div>
-      {/* <CopyComponents></CopyComponents> */}
       <Blogs></Blogs>
-      <Footer></Footer>
+      <ScrollToTopButton></ScrollToTopButton>
     </div>
   );
 };
