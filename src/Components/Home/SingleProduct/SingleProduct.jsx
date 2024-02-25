@@ -8,7 +8,7 @@ const SingleProduct = ({ item }) => {
     <div className="productContainer">
       <Link to={`/product/${_id}`}>
         <img
-          className="h-[367px] w-[305px] cursor-pointer rounded-md"
+          className="h-[330px] w-[305px] rounded-md"
           src={img}
           alt=""
         />

@@ -1,7 +1,9 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 
-const ItemReactTab = () => {
+const ItemReactTab = ({colors,dimensions,sizes,weight}) => {
   return (
     <div className="px-20">
       <Tabs>
@@ -47,22 +49,21 @@ const ItemReactTab = () => {
           </p>
         </TabPanel>
         <TabPanel>
-            {/* TODO */}
           <p className="mb-2  informationClass">
             <span>Weight: </span>
-            {}
+            {weight}
           </p>
           <p className="mb-2 informationClass">
             <span>Dimensions: </span>
-            {}
+            {dimensions}
           </p>
           <p className="mb-2 informationClass">
             <span>Colors: </span>
-            {}
+            {colors}
           </p>
           <p className="mb-2 informationClass">
             <span>Sizes: </span>
-            {}
+            {sizes}
           </p>
         </TabPanel>
       </Tabs>

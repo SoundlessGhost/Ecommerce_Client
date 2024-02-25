@@ -8,7 +8,7 @@ import "swiper/css/navigation";
 
 const Carousel = () => {
   return (
-    <div className="h-[480px] text-center w-[1440px] pt-[120px] pb-[240px]  bg-slate-100 my-20">
+    <div className="h-[480px] text-center w-[1440px] pt-[120px] pb-[240px]  bg-slate-100 py-20">
       <p className="WhatSaying mb-16">what they’re saying</p>
       <div className="swiperStyle">
         <Swiper

@@ -15,6 +15,10 @@ const ShowPerItem = () => {
     price,
     category,
     tag,
+    weight,
+    dimensions,
+    colors,
+    sizes,
   } = loadedItem;
   return (
     <>
@@ -70,7 +74,7 @@ const ShowPerItem = () => {
             </p>
           </div>
         </div>
-        <ItemReactTab></ItemReactTab>
+        <ItemReactTab weight={weight} dimensions={dimensions} sizes={sizes} colors={colors}></ItemReactTab>
       </div>
     </>
   );

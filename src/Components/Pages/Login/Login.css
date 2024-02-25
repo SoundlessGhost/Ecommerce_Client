@@ -1,0 +1,85 @@
+.LoginContainer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 0 50px;
+}
+.LoginContainer img {
+  width: 250px;
+  margin-left: 100px;
+  height: 200px;
+}
+.form {
+  background-color: rgb(252, 252, 252);
+}
+.LoginContainer .form {
+  border: 1px solid rgb(227, 227, 227);
+  border-radius: 10px;
+  height: 410px;
+  width: 400px;
+  margin: 100px 0;
+  padding: 10px;
+}
+.form img {
+  width: 40px;
+  height: 40px;
+  margin: 0 auto;
+}
+.form p {
+  font-size: 20px;
+  text-align: center;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  margin-bottom: 30px;
+}
+.input {
+  height: 40px;
+  width: 100%;
+  border-radius: 10px;
+  border-style: none;
+  background-color: white;
+}
+.input::placeholder {
+  padding: 0px 5px;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.loginBtn {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-weight: bold;
+  font-style: italic;
+  cursor: pointer;
+  height: 40px;
+  width: 100%;
+  border-radius: 10px;
+  background-color: rgb(221, 221, 221);
+  font-weight: bold;
+  margin: 10px 0;
+}
+.google {
+  margin-top: 13px;
+  cursor: pointer;
+}
+h5 {
+  text-align: center;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 13px;
+}
+h5 a:hover {
+  text-decoration: underline;
+}
+.loginDiv {
+  width: 550px;
+}
+.loginTitle {
+  font-size: 25px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: italic;
+}
+.error{
+  color: red;
+}
+.int{
+  background-color: white;
+}

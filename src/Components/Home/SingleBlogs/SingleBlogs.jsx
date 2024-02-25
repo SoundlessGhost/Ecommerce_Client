@@ -10,7 +10,7 @@ const SingleBlogs = ({ blog }) => {
     <div>
       <div className="px-5 py-10 mt-10 bg-slate-50">
         <div className="blogsContainer">
-          <h5>{date}</h5>
+          <h5 className="text-start">{date}</h5>
           <p className="mb-4 mt-2 text-3xl">{blogsName}</p>
           <p>{description.slice(0,400)} ...</p>
           <div className="learnMore mt-3 cursor-pointer">

@@ -1,0 +1,56 @@
+.progressContainer h3 {
+  font-size: 25px;
+}
+.progressContainer p {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+.progressParallax {
+  background-image: url("../../../../assets/diego-gennaro-Omm2brG6Ec0-unsplash.jpg");
+  height: 400px;
+  background-repeat: no-repeat;
+  width: 1440px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+.itemCard {
+  transition: transform 0.5s;
+}
+.itemCard:hover {
+  transform: translateY(-13px);
+}
+
+.aboutUsSliderContainer{
+  background-image: url('../../../../assets/oleg-laptev-7jQh3EiS8Bs-unsplash.jpg');
+  background-repeat: no-repeat;
+}
+.classAboutContainer h2{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 20px;
+}
+.classAboutContainer p{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+/* meet our team */
+.meetTeamContainer{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.image-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.image-container img {
+  transition: filter 0.3s ease;
+  transition: transform 0.5s;
+}
+
+.image-container img:hover {
+  filter: blur(1px); 
+  transform: translateY(12px);
+}

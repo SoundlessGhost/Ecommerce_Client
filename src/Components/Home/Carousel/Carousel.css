@@ -27,9 +27,9 @@
     padding: 20px 10px;
     font-size: 23px;
 }  
-.informationClass{
+.informationClass,.toasterStyle{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-style: italic;
+    
 }
 .informationClass span{
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;

@@ -26,7 +26,14 @@
     font-size: 25px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
-.bg_img button{
-    font-size: 18px;
-    font-weight: bold;
+.about-us{
+    background-image:url('../../../assets/about.jpeg');
+    height: 400px;
+    background-repeat: no-repeat;
+    width: 1440px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }

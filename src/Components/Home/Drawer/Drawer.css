@@ -1,0 +1,8 @@
+.drawerHover {
+  transition: transform 0.5s ease;
+}
+.drawerHover img:hover {
+  margin-right: 15px;
+  transform: rotate(-180deg);
+  cursor: pointer;
+}

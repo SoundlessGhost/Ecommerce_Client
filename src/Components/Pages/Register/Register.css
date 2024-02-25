@@ -1,0 +1,70 @@
+.bgImages {
+  width: 400px;
+  padding-left: 100px;
+  font-family: "Times New Roman", Times, serif;
+  font-style: italic;
+  font-size: 30px;
+  color: rgb(108, 108, 108);
+}
+.registerContainer {
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 150px 0;
+  background-repeat: no-repeat;
+  background-position: right;
+}
+.registerSubContainer {
+  border: 1px solid rgb(227, 227, 227);
+  padding: 20px 10px;
+  width: 700px;
+  border-radius: 10px;
+  margin-right: 150px;
+  box-shadow:  15px 15px 20px -1px rgb(0 0 0 / 0.1);
+  background-image: url('../../../assets/photo-1508717272800-9fff97da7e8f.jpeg'); 
+}
+.registerSubContainer input {
+  padding-left: 10px;
+  height: 40px;
+  border-radius: 10px;
+  width: 80%;
+  border-style: none;
+  background-color: rgb(238, 238, 238);
+  border: 1px solid rgb(188, 187, 187);
+}
+.registerSubContainer button {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-style: italic;
+  cursor: pointer;
+  height: 40px;
+  border-radius: 10px;
+  background-color: rgb(221, 221, 221);
+  margin: 10px 0;
+  padding: 10px 20px;
+}
+.registerTittle {
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: cornflowerblue;
+  font-size: xx-large;
+  font-style: italic;
+}
+.imgContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.instagram,
+.facebook {
+  height: 40px;
+  width: 40px;
+  cursor: pointer;
+}
+small a:hover {
+  text-decoration: underline;
+}
+.tost{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: black;
+}

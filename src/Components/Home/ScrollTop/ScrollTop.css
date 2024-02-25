@@ -1,13 +1,18 @@
-.scrollHover {
+.scroll-to-top {
   position: fixed;
   bottom: 40px;
-  right: -30px;
+  right: -20px;
   font-weight: bold;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
   cursor: pointer;
   font-size: 12px;
   transform: rotate(-90deg);
+  opacity: 0;
+  transition: opacity 0.05s ease;
+}
+.scroll-to-top.visible {
+  opacity: 1;
 }
 .scrollHover {
   display: flex;
