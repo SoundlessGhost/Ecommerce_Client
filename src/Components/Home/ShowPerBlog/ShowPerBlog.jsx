@@ -8,8 +8,11 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 import { Autoplay, Navigation } from "swiper/modules";
+import { useContext, useEffect, useState } from "react";
+import { UserContext } from "../../PrivatePage/AuthProvider/AuthProvider";
 
 const ShowPerBlog = () => {
+  const { user } = useContext(UserContext);
   const loadedBlog = useLoaderData();
   const {
     // authorName,
@@ -21,6 +24,50 @@ const ShowPerBlog = () => {
     date,
     authorDescription,
   } = loadedBlog;
+
+  const handleCommentSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const comment = form.comment.value;
+    const login_user_photo = user.photoURL;
+    const login_user_displayName = user.displayName;
+    const commentInfo = {
+      userComment: comment,
+      photo: login_user_photo,
+      name: login_user_displayName,
+    };
+    form.reset();
+    fetch("http://localhost:9000/comment", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(commentInfo),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+  };
+
+  const [comments, setComments] = useState([]);
+  useEffect(() => {
+    const fetchDataAndSetState = () => {
+      fetch("http://localhost:9000/comment")
+        .then((res) => res.json())
+        .then((data) => setComments(data));
+    };
+    fetchDataAndSetState();
+
+    // Set interval to fetch data every, 2 seconds
+    const intervalId = setInterval(() => {
+      fetchDataAndSetState();
+    }, 2000);
+
+    // Clean up the interval when is unmounted
+    return () => clearInterval(intervalId);
+  }, []);
+
   return (
     <div className="flex pt-[140px] px-16 justify-between ShowPerBlogsContainer">
       <div className="w-[950px] mr-10">
@@ -115,7 +162,9 @@ const ShowPerBlog = () => {
           </Swiper>
         </div>
         {/* Slider End */}
-        <span>{blogsName}</span>
+        <span>
+          {blogsName} {comments.length}
+        </span>
         <p className="AuthorDate my-2">{date}</p>
         <p className="my-4">{authorDescription}</p>
         <div className="flex mb-4">
@@ -140,18 +189,53 @@ const ShowPerBlog = () => {
           war and marketing have many similarities.
         </h3>
         <p className="my-4">{authorDescription.slice(103, 446)}.</p>
-        {/* TODO */}
         <span>Leave a Comment</span> <br />
-        <textarea
-          placeholder="your comment"
-          className="bg-white rounded-md placeholder:pl-4  placeholder:pt-4 border-2 w-[500px] h-[200px] my-4"
-          type="text"
-        /> <br />
-        <input
-          className="bg-black mb-4 rounded-md text-white px-4 py-3"
-          type="submit"
-          value="Submit"
-        />
+        <form onSubmit={handleCommentSubmit}>
+          <textarea
+            name="comment"
+            required
+            placeholder="your comment"
+            className="bg-white rounded-md p-2 border-2 w-[400px] h-[100px] my-4"
+            type="text"
+          />{" "}
+          <br />
+          <input
+            className="bg-black rounded-md text-white px-4 py-3"
+            type="submit"
+            value="Submit"
+          />
+        </form>
+        <hr className="my-4"></hr>
+        {/* Comment Section */}
+        <div className="mb-10">
+          {comments.map((comment) => (
+            <div key={comment._id} className="flex items-center mb-4">
+              <div>
+                {comment.photo ? (
+                  <img
+                    src={comment.photo}
+                    className=" w-[50px] rounded-full mr-2"
+                    alt=""
+                  />
+                ) : (
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/128/149/149071.png"
+                    className=" w-[50px] rounded-full mr-2"
+                    alt=""
+                  />
+                )}
+              </div>
+              <div>
+                <h2 className="font-semibold">unknown user</h2>
+                <small>
+                  {" "}
+                  <p className="">{comment.userComment}</p>
+                </small>
+              </div>
+            </div>
+          ))}
+        </div>
+        {/* Comment Section */}
       </div>
       <div className="w-[300px] ml-10">
         <span>About Author</span>

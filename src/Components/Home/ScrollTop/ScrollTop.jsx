@@ -5,7 +5,6 @@ const ScrollToTopButton = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   const handleScroll = () => {
-    console.log("Scroll position:", window.scrollY);
     // Check if the user has scrolled down, and set the visibility accordingly
     if (window.scrollY > 600) {
       setIsVisible(true);
