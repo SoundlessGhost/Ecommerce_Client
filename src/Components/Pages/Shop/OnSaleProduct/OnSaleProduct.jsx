@@ -4,6 +4,7 @@ import axios from "axios";
 import { useState } from "react";
 import ItemReactTab from "../../../Home/ItemReactTab/ItemReactTab";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const OnSaleProduct = () => {
   const [products, setProducts] = useState([]);
@@ -18,6 +19,9 @@ const OnSaleProduct = () => {
 
   return (
     <>
+    <Helmet>
+        <title>Snake Eye || On Sale Product</title>
+      </Helmet>
       {products.slice(26, 27).map((product) => (
         <div key={product._id} className="pt-40 pb-20">
           <div className="flex">

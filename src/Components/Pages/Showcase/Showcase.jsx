@@ -6,9 +6,13 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "./Showcase.css";
 import { Autoplay, Navigation,EffectCards } from "swiper/modules";
+import { Helmet } from "react-helmet-async";
 const Showcase = () => {
   return (
     <>
+    <Helmet>
+        <title>Snake Eye || Uncover Showcase</title>
+      </Helmet>
       <div className="showcaseContainer">
         <Swiper
           autoplay={{

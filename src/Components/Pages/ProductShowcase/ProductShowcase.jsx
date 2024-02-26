@@ -1,5 +1,6 @@
 // import React from 'react';
 
+import { Helmet } from "react-helmet-async";
 import Carousel from "../../Home/Carousel/Carousel";
 import ProductShowcaseSlider from "./ProductShowcaseSlider/ProductShowcaseSlider";
 import Progress from "./Progress/Progress";
@@ -7,6 +8,9 @@ import Progress from "./Progress/Progress";
 const ProductShowcase = () => {
   return (
     <div>
+      <Helmet>
+        <title>Snake Eye || Product Showcase</title>
+      </Helmet>
       <ProductShowcaseSlider></ProductShowcaseSlider>
       <Progress></Progress>
       <div>

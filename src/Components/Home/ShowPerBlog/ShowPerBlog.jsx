@@ -10,6 +10,7 @@ import "swiper/css/navigation";
 import { Autoplay, Navigation } from "swiper/modules";
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../PrivatePage/AuthProvider/AuthProvider";
+import { Helmet } from "react-helmet-async";
 
 const ShowPerBlog = () => {
   const { user } = useContext(UserContext);
@@ -75,6 +76,9 @@ const ShowPerBlog = () => {
 
   return (
     <div className="flex pt-[140px] px-16 justify-between ShowPerBlogsContainer">
+      <Helmet>
+        <title>Snake Eye || Blogs</title>
+      </Helmet>
       <div className="w-[950px] mr-10">
         {/* Slider Start */}
         <div className="mb-4">

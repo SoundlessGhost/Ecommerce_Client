@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import useCart from "../../../Hooks/useCart";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const UserCart = () => {
   const [cart, refetch] = useCart();
@@ -42,9 +43,12 @@ const UserCart = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>Snake Eye || My Product</title>
+      </Helmet>
       <div className="flex justify-between items-center mb-5 priceField">
         <p className="">Total Order : {cart.length} Pieces</p>
-        <p>Total Price : $ {totalPrice}</p>
+        <p>Total Price : $ {totalPrice.toFixed(2)}</p>
         <Link to="/dashboard/payment">
           <p className="btn">Pay</p>
         </Link>
@@ -66,7 +70,7 @@ const UserCart = () => {
                 {/* row 1 */}
                 <tr>
                   <td>
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-3 w-[250px]">
                       <div className="avatar">
                         <div className="mask mask-squircle w-12 h-12">
                           <img
@@ -86,9 +90,11 @@ const UserCart = () => {
                     </div>
                   </td>
                   <td>
-                    <small>
-                      <p className="priceField">$ {item.productInfo.price}</p>
-                    </small>
+                    <div className="w-[100px]">
+                      <small>
+                        <p className="priceField">$ {item.productInfo.price}</p>
+                      </small>
+                    </div>
                   </td>
                   <td className="priceField">
                     <small>Color - {item.productInfo.colors[0]}</small> <br />

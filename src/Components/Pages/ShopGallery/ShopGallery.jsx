@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 
 const ShopGallery = () => {
@@ -14,6 +15,9 @@ const ShopGallery = () => {
     });
   return (
     <div className="grid grid-cols-4 pt-24">
+      <Helmet>
+        <title>Snake Eye || Shop Gallery</title>
+      </Helmet>
         {products.slice(12, 24).map((item) => (
           <div key={item._id} className="productContainer  pl-7 pb-10 itemCard">
             <Link to={`/product/${item._id}`}>

@@ -25,17 +25,7 @@ const Login = () => {
     signIn(email, password)
       .then((result) => {
         const user = result.user;
-        fetch("http://localhost:9000/user", {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(user),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data);
-          });
+        console.log(user);
 
         navigate(from, { replace: true });
         toast("user login successfully");
@@ -48,7 +38,20 @@ const Login = () => {
     googleSignIn()
       .then((result) => {
         const user = result.user;
-        console.log(user);
+
+        const savedUser = { name: user.displayName, email: user.email };
+        fetch("http://localhost:9000/user", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(savedUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+          });
+
         navigate(from, { replace: true });
         toast("user login successfully");
       })

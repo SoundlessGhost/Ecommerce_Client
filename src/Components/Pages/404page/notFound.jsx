@@ -3,9 +3,13 @@
 import "./notFound.css";
 import robot from "../../../assets/robot.png";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 const NotFound = () => {
   return (
     <div>
+      <Helmet>
+        <title>Snake Eye || 404 page</title>
+      </Helmet>
       <div className="NotFound__Container">
         <div>
           <p className="NotFound_Tittle">Snake Eye</p>

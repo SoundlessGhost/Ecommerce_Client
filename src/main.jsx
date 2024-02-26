@@ -29,6 +29,9 @@ import UserHome from "./Components/Pages/Dashboard/userHome/userHome";
 import UserCart from "./Components/Pages/Dashboard/userCart/userCart";
 import Payment from "./Components/Pages/Dashboard/Payment/Payment";
 import PaymentHistory from "./Components/Pages/Dashboard/PaymentHistory/PaymentHistory";
+import AllUsers from "./Components/Pages/Dashboard/Admin/AllUsers/AllUsers";
+import ManageAllProduct from "./Components/Pages/Dashboard/Admin/ManageAllproduct/ManageAllproduct";
+import AddItem from "./Components/Pages/Dashboard/Admin/AddItem/AddItem";
 
 const queryClient = new QueryClient();
 
@@ -98,7 +101,11 @@ const router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <Dashboard></Dashboard>,
+    element: (
+      <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
     errorElement: <NotFound></NotFound>,
     children: [
       {
@@ -110,21 +117,37 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path:'home',
-        element:<UserHome></UserHome>
+        path: "home",
+        element: <UserHome></UserHome>,
       },
       {
-        path:'carts',
-        element:<UserCart></UserCart>
+        path: "carts",
+        element: (
+          <PrivateRoute>
+            <UserCart></UserCart>
+          </PrivateRoute>
+        ),
       },
       {
-        path:'payment',
-        element:<Payment></Payment>
+        path: "payment",
+        element: <Payment></Payment>,
       },
       {
-        path:'payment_history',
-        element:<PaymentHistory></PaymentHistory>
-      }
+        path: "payment_history",
+        element: <PaymentHistory></PaymentHistory>,
+      },
+      {
+        path: "all_user",
+        element: <AllUsers></AllUsers>,
+      },
+      {
+        path: "add_item",
+        element: <AddItem></AddItem>,
+      },
+      {
+        path: "manage_all_product",
+        element: <ManageAllProduct></ManageAllProduct>,
+      },
     ],
   },
 ]);

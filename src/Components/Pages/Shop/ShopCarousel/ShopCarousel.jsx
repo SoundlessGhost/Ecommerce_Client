@@ -6,6 +6,7 @@ import { Autoplay, FreeMode, Pagination } from "swiper/modules";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 const ShopCarousel = () => {
   const [products, setProducts] = useState([]);
@@ -19,6 +20,9 @@ const ShopCarousel = () => {
     });
   return (
     <>
+    <Helmet>
+        <title>Snake Eye || Shop Carousel</title>
+      </Helmet>
       <div className="pt-32 pb-24">
         <Swiper
           slidesPerView={4}

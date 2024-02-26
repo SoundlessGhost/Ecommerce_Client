@@ -2,11 +2,15 @@ import { useContext } from "react";
 import { UserContext } from "../../PrivatePage/AuthProvider/AuthProvider";
 import DashboardAreaChart from "./AreaChart/AreaChart";
 import PieChart from "./PieChart/PieChart";
+import { Helmet } from "react-helmet-async";
 
 const UserDashboard = () => {
   const { user } = useContext(UserContext);
   return (
     <div className="flex justify-between pt-36 px-10">
+      <Helmet>
+        <title>Snake Eye || Admin Dashboard</title>
+      </Helmet>
       <div className="">
         <p className="h-[200px]"> Total Balance</p>
         <PieChart></PieChart>

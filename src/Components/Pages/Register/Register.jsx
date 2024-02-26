@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Register.css";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
@@ -8,7 +8,11 @@ import { UserContext } from "../../PrivatePage/AuthProvider/AuthProvider";
 import toast from "react-hot-toast";
 const Register = () => {
   const [error, setError] = useState("");
-  const { createUser } = useContext(UserContext);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+  const { createUser, updateUserProfile } = useContext(UserContext);
   const {
     register,
     handleSubmit,
@@ -19,10 +23,26 @@ const Register = () => {
   const onSubmit = (data) => {
     createUser(data.email, data.password)
       .then((result) => {
-        const user = result.user;
+        updateUserProfile(data.name, data.photoURL)
+          .then(() => {
+            const savedUser = { name: data.name, email: data.email };
+            fetch("http://localhost:9000/user", {
+              method: "POST",
+              headers: {
+                "content-type": "application/json",
+              },
+              body: JSON.stringify(savedUser),
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                console.log(data);
+              });
+          })
+          .catch((e) => {
+            setError(e.message);
+          });
         toast("user create successfully");
-        reset();
-        
+        navigate(from, { replace: true });
       })
       .catch((e) => {
         console.log(e);

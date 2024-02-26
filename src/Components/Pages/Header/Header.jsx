@@ -200,16 +200,18 @@ const Header = () => {
               )}
             </div>
             {/*  */}
-            <div className="flex items-center">
-              <img
-                className="ml-6 cursor-pointer h-6 w-6 menu-item"
-                src="https://cdn-icons-png.flaticon.com/128/9630/9630118.png"
-                alt=""
-              />
-              <div className="badge bg-white border-0 text-black mb-3 -ml-2">
-                {cart?.length || 0}
+            <Link to="dashboard/carts">
+              <div className="flex items-center">
+                <img
+                  className="ml-6 cursor-pointer h-6 w-6 menu-item"
+                  src="https://cdn-icons-png.flaticon.com/128/9630/9630118.png"
+                  alt=""
+                />
+                <div className="badge bg-white border-0 text-black mb-3 -ml-2">
+                  {cart?.length || 0}
+                </div>
               </div>
-            </div>
+            </Link>
             {/*  */}
             <div
               className="header-item"
@@ -225,7 +227,7 @@ const Header = () => {
                 <div className="dropdown dropdown-hover dropdown-end ">
                   <ul className=" py-2  dropdownLink pr-3">
                     <p className="pb-px ">
-                      <Link to="user_dashboard">User Dashboard</Link>
+                      <Link to="/dashboard/user_dashboard">User Dashboard</Link>
                     </p>
                     <p className="pb-px ">
                       <Link to="/dashboard/home">My Account</Link>
