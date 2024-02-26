@@ -4,11 +4,15 @@ import "./Header.css";
 import { UserContext } from "../../PrivatePage/AuthProvider/AuthProvider";
 import toast from "react-hot-toast";
 import Drawer from "../../Home/Drawer/Drawer";
+import useCart from "../../Hooks/useCart";
 const Header = () => {
+  //
+  const [cart] = useCart();
+  //
   const { user, logOut } = useContext(UserContext);
   const navigate = useNavigate();
   const [scrolled, setScrolled] = useState(false);
-
+  //
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
@@ -75,7 +79,7 @@ const Header = () => {
     }
   };
 
-  // handleLogOut
+  // Handle LogOut
   const handleLogOut = () => {
     logOut()
       .then(() => {
@@ -97,7 +101,8 @@ const Header = () => {
               onMouseLeave={() => handleMouseLeave("Name")}
             >
               <p className="py-2 pl-6" onClick={() => navigate("/")}>
-                <span className="text-red-900">Snake</span> <span className= " text-cyan-800">Eye</span>
+                <span className="text-red-900">Snake</span>{" "}
+                <span className=" text-cyan-800">Eye</span>
               </p>
             </div>
           </div>
@@ -195,11 +200,16 @@ const Header = () => {
               )}
             </div>
             {/*  */}
-            <img
-              className="ml-6 cursor-pointer h-6 w-6 menu-item"
-              src="https://cdn-icons-png.flaticon.com/128/9630/9630118.png"
-              alt=""
-            />
+            <div className="flex items-center">
+              <img
+                className="ml-6 cursor-pointer h-6 w-6 menu-item"
+                src="https://cdn-icons-png.flaticon.com/128/9630/9630118.png"
+                alt=""
+              />
+              <div className="badge bg-white border-0 text-black mb-3 -ml-2">
+                {cart?.length || 0}
+              </div>
+            </div>
             {/*  */}
             <div
               className="header-item"
@@ -207,7 +217,7 @@ const Header = () => {
               onMouseLeave={() => handleMouseLeave("Menu")}
             >
               <img
-                className="ml-6 cursor-pointer h-6 w-6 menu-item"
+                className="ml-4 cursor-pointer h-6 w-6 menu-item"
                 src="https://cdn-icons-png.flaticon.com/128/5259/5259008.png"
                 alt=""
               />
@@ -218,7 +228,7 @@ const Header = () => {
                       <Link to="user_dashboard">User Dashboard</Link>
                     </p>
                     <p className="pb-px ">
-                      <Link to="my_account">My Account</Link>
+                      <Link to="/dashboard/home">My Account</Link>
                     </p>
                     {user ? (
                       <p onClick={handleLogOut}>Log Out</p>

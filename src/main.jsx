@@ -13,7 +13,6 @@ import ShowPerBlog from "./Components/Home/ShowPerBlog/ShowPerBlog";
 import Login from "./Components/Pages/Login/Login";
 import Register from "./Components/Pages/Register/Register";
 import AuthProvider from "./Components/PrivatePage/AuthProvider/AuthProvider";
-import UserAccount from "./Components/Pages/UserAccount/UserAccount";
 import PrivateRoute from "./Components/PrivatePage/PrivateRoute/PrivateRoute";
 import UserDashboard from "./Components/Pages/UserDashbord/UserDashbord";
 import Showcase from "./Components/Pages/Showcase/Showcase";
@@ -23,6 +22,15 @@ import AboutUs from "./Components/Pages/Pages/AboutUs/AboutUs";
 import MeetOurTeam from "./Components/Pages/Pages/MeetOurTeam/MeetOurTeam";
 import ShopCarousel from "./Components/Pages/Shop/ShopCarousel/ShopCarousel";
 import OnSaleProduct from "./Components/Pages/Shop/OnSaleProduct/OnSaleProduct";
+
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import Dashboard from "./Components/Pages/Dashboard/Dashboard/Dashboard";
+import UserHome from "./Components/Pages/Dashboard/userHome/userHome";
+import UserCart from "./Components/Pages/Dashboard/userCart/userCart";
+import Payment from "./Components/Pages/Dashboard/Payment/Payment";
+import PaymentHistory from "./Components/Pages/Dashboard/PaymentHistory/PaymentHistory";
+
+const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
@@ -53,22 +61,6 @@ const router = createBrowserRouter([
       {
         path: "register",
         element: <Register></Register>,
-      },
-      {
-        path: "my_account",
-        element: (
-          <PrivateRoute>
-            <UserAccount></UserAccount>
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "user_dashboard",
-        element: (
-          <PrivateRoute>
-            <UserDashboard></UserDashboard>
-          </PrivateRoute>
-        ),
       },
       {
         path: "/showcase",
@@ -104,13 +96,46 @@ const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: "dashboard",
+    element: <Dashboard></Dashboard>,
+    errorElement: <NotFound></NotFound>,
+    children: [
+      {
+        path: "user_dashboard",
+        element: (
+          <PrivateRoute>
+            <UserDashboard></UserDashboard>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path:'home',
+        element:<UserHome></UserHome>
+      },
+      {
+        path:'carts',
+        element:<UserCart></UserCart>
+      },
+      {
+        path:'payment',
+        element:<Payment></Payment>
+      },
+      {
+        path:'payment_history',
+        element:<PaymentHistory></PaymentHistory>
+      }
+    ],
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <AuthProvider>
     <HelmetProvider>
       <React.StrictMode>
-        <RouterProvider router={router} />
+        <QueryClientProvider client={queryClient}>
+          <RouterProvider router={router} />
+        </QueryClientProvider>
       </React.StrictMode>
     </HelmetProvider>
   </AuthProvider>

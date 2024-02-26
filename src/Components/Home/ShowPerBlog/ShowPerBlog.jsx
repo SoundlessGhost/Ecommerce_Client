@@ -15,7 +15,6 @@ const ShowPerBlog = () => {
   const { user } = useContext(UserContext);
   const loadedBlog = useLoaderData();
   const {
-    // authorName,
     blogsName,
     authorImg,
     category,
@@ -49,8 +48,10 @@ const ShowPerBlog = () => {
         console.log(data);
       });
   };
+  // comment section
 
   const [comments, setComments] = useState([]);
+  const [count, setCount] = useState(3);
   useEffect(() => {
     const fetchDataAndSetState = () => {
       fetch("http://localhost:9000/comment")
@@ -67,6 +68,10 @@ const ShowPerBlog = () => {
     // Clean up the interval when is unmounted
     return () => clearInterval(intervalId);
   }, []);
+
+  const handleShowMore = () => {
+    setCount(count === 3 ? comments.length : 3);
+  };
 
   return (
     <div className="flex pt-[140px] px-16 justify-between ShowPerBlogsContainer">
@@ -194,13 +199,13 @@ const ShowPerBlog = () => {
           <textarea
             name="comment"
             required
-            placeholder="your comment"
+            placeholder="create your comment"
             className="bg-white rounded-md p-2 border-2 w-[400px] h-[100px] my-4"
             type="text"
           />{" "}
           <br />
           <input
-            className="bg-black rounded-md text-white px-4 py-3"
+            className="bg-black rounded-md cursor-pointer text-white px-4 py-3"
             type="submit"
             value="Submit"
           />
@@ -208,7 +213,7 @@ const ShowPerBlog = () => {
         <hr className="my-4"></hr>
         {/* Comment Section */}
         <div className="mb-10">
-          {comments.map((comment) => (
+          {comments.slice(0, count).map((comment) => (
             <div key={comment._id} className="flex items-center mb-4">
               <div>
                 {comment.photo ? (
@@ -226,7 +231,9 @@ const ShowPerBlog = () => {
                 )}
               </div>
               <div>
-                <h2 className="font-semibold">unknown user</h2>
+                <h2 className="font-semibold">
+                  {comment.name ? comment.name : "unknown user"}
+                </h2>
                 <small>
                   {" "}
                   <p className="">{comment.userComment}</p>
@@ -234,6 +241,21 @@ const ShowPerBlog = () => {
               </div>
             </div>
           ))}
+          <div onClick={handleShowMore} className=" flex justify-center ">
+            {count === 3 ? (
+              <img
+                className="w-7 cursor-pointer"
+                src="https://cdn-icons-png.flaticon.com/128/2985/2985150.png"
+                alt=""
+              />
+            ) : (
+              <img
+                className="w-7 cursor-pointer"
+                src="https://cdn-icons-png.flaticon.com/128/3106/3106683.png"
+                alt=""
+              />
+            )}
+          </div>
         </div>
         {/* Comment Section */}
       </div>

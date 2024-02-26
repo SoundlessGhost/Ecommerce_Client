@@ -1,9 +1,19 @@
 /* eslint-disable react/prop-types */
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import "./ShowPerItem.css";
 import ItemReactTab from "../ItemReactTab/ItemReactTab";
+import { useContext } from "react";
+import { UserContext } from "../../PrivatePage/AuthProvider/AuthProvider";
+import toast from "react-hot-toast";
+import useCart from "../../Hooks/useCart";
 
 const ShowPerItem = () => {
+  //
+  const [,refetch] = useCart();
+  const { user } = useContext(UserContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+  //
   const loadedItem = useLoaderData();
   const {
     productName,
@@ -19,7 +29,36 @@ const ShowPerItem = () => {
     dimensions,
     colors,
     sizes,
+    _id,
   } = loadedItem;
+  //
+  const handleAddToCart = () => {
+    const orderInfo = {
+      productId: _id,
+      productInfo: loadedItem,
+      email: user?.email,
+    };
+    if (user && user.email) {
+      fetch("http://localhost:9000/carts", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(orderInfo),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          if (data.insertedId) {
+            refetch();
+            toast("product add successfully");
+          }
+        });
+    } else {
+      navigate("/login", { state: { from: location } });
+      toast("please login order to product");
+    }
+  };
   return (
     <>
       <div className="pt-40 pb-20">
@@ -63,7 +102,10 @@ const ShowPerItem = () => {
             <p className="mb-3">
               <span>Rating:</span> {rating}
             </p>
-            <button className="bg-black mt-4 mb-3 rounded-md text-white px-4 py-3">
+            <button
+              onClick={handleAddToCart}
+              className="bg-black mt-4 mb-3 rounded-md text-white px-4 py-3"
+            >
               add to cart
             </button>
             <p className="mb-3">
@@ -74,7 +116,12 @@ const ShowPerItem = () => {
             </p>
           </div>
         </div>
-        <ItemReactTab weight={weight} dimensions={dimensions} sizes={sizes} colors={colors}></ItemReactTab>
+        <ItemReactTab
+          weight={weight}
+          dimensions={dimensions}
+          sizes={sizes}
+          colors={colors}
+        ></ItemReactTab>
       </div>
     </>
   );
