@@ -9,9 +9,6 @@ const RelativePdt = () => {
     .then((res) => {
       setProducts(res.data);
     })
-    .catch((err) => {
-      console.log(err);
-    });
   return (
     <div className="grid grid-cols-4">
       {products.slice(8, 12).map((item) => (

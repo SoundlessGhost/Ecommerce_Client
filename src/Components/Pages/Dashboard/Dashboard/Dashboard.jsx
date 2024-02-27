@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet-async";
 import { useContext } from "react";
 import { UserContext } from "../../../PrivatePage/AuthProvider/AuthProvider";
 import toast from "react-hot-toast";
+import useAdmin from "../../../Hooks/useAdmin";
 const Dashboard = () => {
   const { logOut } = useContext(UserContext);
   const navigate = useNavigate();
@@ -19,9 +20,7 @@ const Dashboard = () => {
         console.log(e);
       });
   };
-
-  // TODO dynamic admin from DB
-  const isAdmin = true;
+  const [isAdmin] = useAdmin();
   return (
     <div>
       <Helmet>

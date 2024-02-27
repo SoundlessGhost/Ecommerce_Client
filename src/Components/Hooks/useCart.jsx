@@ -1,16 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
-import { useContext } from "react";
-import { UserContext } from "../PrivatePage/AuthProvider/AuthProvider";
+import useAxiosSecure from "./useAxiosSecure";
+import useAuth from "./useAuth";
 
 const useCart = () => {
-  const { user } = useContext(UserContext);
+  // const token = localStorage.getItem("accessToken");
+  const [axiosSecure] = useAxiosSecure();
+  const { user } = useAuth();
   const { refetch, data: cart = [] } = useQuery({
     queryKey: ["cart", user?.email],
     queryFn: async () => {
-      const res = await fetch(
-        `http://localhost:9000/carts?email=${user?.email}`
-      );
-      return res.json();
+      const res = await axiosSecure(`/carts?email=${user?.email}`);
+      return res.data;
     },
   });
 
@@ -18,3 +18,18 @@ const useCart = () => {
 };
 
 export default useCart;
+
+
+//?
+// queryFn: async () => {
+//   const res = await fetch(
+//     `http://localhost:9000/carts?email=${user?.email}`,
+//     {
+//       headers: {
+//         authorization: `Bearer ${token}`,
+//       },
+//     }
+//   );
+//   return res.json();
+// },
+//?

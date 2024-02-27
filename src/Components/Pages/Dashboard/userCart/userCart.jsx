@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
 
 const UserCart = () => {
-  const [cart, refetch] = useCart();
+  const [cart, refetch] = useCart([]);
 
   const totalPrice = cart.reduce(
     (sum, item) => sum + item.productInfo.price,
@@ -28,7 +28,6 @@ const UserCart = () => {
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
             if (data.deleteCount > 0) {
               Swal.fire({
                 title: "Deleted!",
@@ -53,24 +52,24 @@ const UserCart = () => {
           <p className="btn">Pay</p>
         </Link>
       </div>
-      {cart.map((item) => (
-        <div key={item._id}>
-          <div className="overflow-x-auto">
-            <table className="table border-0 border-r-2 border-l-2 border-t-2">
-              {/* head */}
-              <thead>
-                <tr>
-                  <th>Image & Name</th>
-                  <th>Price</th>
-                  <th>Available</th>
-                  <th>Delete</th>
-                </tr>
-              </thead>
-              <tbody>
-                {/* row 1 */}
-                <tr>
+      <div>
+        <div className="overflow-x-auto">
+          <table className="table">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Image & Name</th>
+                <th>Price</th>
+                <th>Available</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {cart.map((item, index) => (
+                <tr key={item._id}>
+                  <td className="priceField">{index + 1}</td>
                   <td>
-                    <div className="flex items-center gap-3 w-[250px]">
+                    <div className="flex items-center gap-3">
                       <div className="avatar">
                         <div className="mask mask-squircle w-12 h-12">
                           <img
@@ -90,7 +89,7 @@ const UserCart = () => {
                     </div>
                   </td>
                   <td>
-                    <div className="w-[100px]">
+                    <div>
                       <small>
                         <p className="priceField">$ {item.productInfo.price}</p>
                       </small>
@@ -113,11 +112,11 @@ const UserCart = () => {
                     />
                   </th>
                 </tr>
-              </tbody>
-            </table>
-          </div>
+              ))}
+            </tbody>
+          </table>
         </div>
-      ))}
+      </div>
     </div>
   );
 };

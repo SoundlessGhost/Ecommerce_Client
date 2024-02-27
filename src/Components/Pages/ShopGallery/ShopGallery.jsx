@@ -18,7 +18,7 @@ const ShopGallery = () => {
       <Helmet>
         <title>Snake Eye || Shop Gallery</title>
       </Helmet>
-        {products.slice(12, 24).map((item) => (
+        {products.map((item) => (
           <div key={item._id} className="productContainer  pl-7 pb-10 itemCard">
             <Link to={`/product/${item._id}`}>
               <img

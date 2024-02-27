@@ -9,7 +9,7 @@ import useCart from "../../Hooks/useCart";
 
 const ShowPerItem = () => {
   //
-  const [,refetch] = useCart();
+  const [, refetch] = useCart();
   const { user } = useContext(UserContext);
   const location = useLocation();
   const navigate = useNavigate();
@@ -111,9 +111,11 @@ const ShowPerItem = () => {
             <p className="mb-3">
               <span>Category:</span> {category}
             </p>
-            <p className="mb-3">
-              <span>Tag:</span> {tag[0]}, {tag[1]}, {tag[2]}
-            </p>
+            {tag ? (
+              <p className="mb-3">
+                <span>Tag:</span> {tag[0]}, {tag[1]}, {tag[2]}
+              </p>
+            ) : null}
           </div>
         </div>
         <ItemReactTab

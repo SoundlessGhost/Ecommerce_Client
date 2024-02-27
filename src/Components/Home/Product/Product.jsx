@@ -9,9 +9,6 @@ const Product = () => {
     .then((res) => {
       setProducts(res.data);
     })
-    .catch((err) => {
-      console.log(err);
-    });
   return (
     <div>
       <div className="text-center my-12 sellPost">

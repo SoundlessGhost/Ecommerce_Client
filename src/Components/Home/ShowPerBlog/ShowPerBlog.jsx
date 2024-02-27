@@ -11,8 +11,10 @@ import { Autoplay, Navigation } from "swiper/modules";
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../PrivatePage/AuthProvider/AuthProvider";
 import { Helmet } from "react-helmet-async";
+import useCart from "../../Hooks/useCart";
 
 const ShowPerBlog = () => {
+  const [, refetch] = useCart();
   const { user } = useContext(UserContext);
   const loadedBlog = useLoaderData();
   const {
@@ -29,8 +31,8 @@ const ShowPerBlog = () => {
     e.preventDefault();
     const form = e.target;
     const comment = form.comment.value;
-    const login_user_photo = user.photoURL;
-    const login_user_displayName = user.displayName;
+    const login_user_photo = user?.photoURL;
+    const login_user_displayName = user?.displayName;
     const commentInfo = {
       userComment: comment,
       photo: login_user_photo,
@@ -47,6 +49,7 @@ const ShowPerBlog = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        refetch();
       });
   };
   // comment section
@@ -171,9 +174,7 @@ const ShowPerBlog = () => {
           </Swiper>
         </div>
         {/* Slider End */}
-        <span>
-          {blogsName} {comments.length}
-        </span>
+        <span>{blogsName}</span>
         <p className="AuthorDate my-2">{date}</p>
         <p className="my-4">{authorDescription}</p>
         <div className="flex mb-4">
