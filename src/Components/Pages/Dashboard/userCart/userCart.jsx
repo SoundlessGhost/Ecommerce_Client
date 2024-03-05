@@ -7,10 +7,9 @@ const UserCart = () => {
   const [cart, refetch] = useCart([]);
 
   const totalPrice = cart.reduce(
-    (sum, item) => sum + item.productInfo.price,
+    (sum, item) => sum + parseInt(item.productInfo.price),
     0
   );
-
   //   HandleDeleteMethod
   const handleDeleteMethod = (id) => {
     Swal.fire({
@@ -47,7 +46,7 @@ const UserCart = () => {
       </Helmet>
       <div className="flex justify-between items-center mb-5 priceField">
         <p className="">Total Order : {cart.length} Pieces</p>
-        <p>Total Price : $ {totalPrice.toFixed(2)}</p>
+        <p>Total Price : $ {totalPrice}</p>
         <Link to="/dashboard/payment">
           <p className="btn">Pay</p>
         </Link>

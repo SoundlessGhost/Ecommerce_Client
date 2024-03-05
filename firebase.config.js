@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBm9naQuic8LY2hLncrMHYTBqtjgod-asI",
-  authDomain: "snake-eye-2.firebaseapp.com",
-  projectId: "snake-eye-2",
-  storageBucket: "snake-eye-2.appspot.com",
-  messagingSenderId: "311415659170",
-  appId: "1:311415659170:web:a5c24b27683a08e61d15fb"
+  apiKey: import.meta.env.VITE_apiKey,
+  authDomain: import.meta.env.VITE_authDomain,
+  projectId: import.meta.env.VITE_projectId,
+  storageBucket: import.meta.env.VITE_storageBucket,
+  messagingSenderId: import.meta.env.VITE_messagingSenderId,
+  appId: import.meta.env.VITE_appId,
 };
 
 // Initialize Firebase

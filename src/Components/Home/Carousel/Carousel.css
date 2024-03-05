@@ -1,37 +1,40 @@
-.WhatSaying{
-    font-size:30px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+.WhatSaying {
+  font-size: 30px;
+  font-family: Georgia, "Times New Roman", Times, serif;
 }
-.swiperStyle ,.ShowPerBlogsContainer{
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+.swiperStyle,
+.ShowPerBlogsContainer {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
-.ShowPerBlogsContainer p{
-    color: gray;
+.ShowPerBlogsContainer p {
+  color: gray;
 }
-.ShowPerBlogsContainer span{
-    font-size: 20px;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-weight: bold;
+.ShowPerBlogsContainer span {
+  font-size: 20px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-weight: bold;
 }
-.AuthorDate{
-    font-size:smaller;
+.AuthorDate {
+  font-size: smaller;
 }
-.ShowPdtDetails{
-    font-size: 23px;
+.ShowPdtDetails {
+  font-size: 23px;
 }
-.warAndMarket{
-    margin: 30px 0;
-    text-align: center;
-    background-color: rgb(203, 203, 203);
-    border-radius: 5px;
-    padding: 20px 10px;
-    font-size: 23px;
-}  
-.informationClass,.toasterStyle{
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    
+.warAndMarket {
+  margin: 30px 0;
+  text-align: center;
+  background-color: rgb(203, 203, 203);
+  border-radius: 5px;
+  padding: 20px 10px;
+  font-size: 23px;
 }
-.informationClass span{
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-weight: bold;
+.informationClass,
+.toasterStyle {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+.informationClass span {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-weight: bold;
 }

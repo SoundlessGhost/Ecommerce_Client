@@ -1,47 +1,63 @@
-// import React from 'react';
-
+import { useForm } from "react-hook-form";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import "./AddItem.css";
-const AddItem = () => {
-  const addHandleSubmit = (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const ProductName = form.ProductName.value;
-    const Price = form.Price.value;
-    const AvailableQuantity = form.Available.value;
-    const rating = form.Rating.value;
-    const CategoryName = form.Category.value;
-    const dimensions = form.Dimensions.value;
-    const color = form.Color.value;
-    const weight = form.Weight.value;
-    const PhotoURl = form.PhotoURl.value;
-    const Additional1 = form.PhotoURl1.value;
-    const Additional2 = form.PhotoURl2.value;
-    const Additional3 = form.PhotoURl3.value;
-    const NewProduct = {
-      productName: ProductName,
-      price: Price,
-      availableQuantity: AvailableQuantity,
+
+const UpdateProduct = () => {
+    const navigate = useNavigate()
+  const { handleSubmit, register } = useForm();
+  //   default value
+  const product = useLoaderData();
+  const {
+    _id,
+    productName,
+    price,
+    availableQuantity,
+    rating,
+    category,
+    dimensions,
+    weight,
+    img,
+    additionalImages,
+  } = product;
+
+  //   handle submit
+  const onSubmit = (data) => {
+    const {
+      productName,
+      price,
+      availableQuantity,
       rating,
-      category: CategoryName,
+      category,
+      dimensions,
+      color,
+      weight,
+      Additional1,
+      Additional2,
+      Additional3,
+      img,
+    } = data;
+    const updateProduct = {
+      productName,
+      price,
+      availableQuantity,
+      rating,
+      category,
       dimensions,
       colors: [color],
       weight,
+      img,
       additionalImages: [Additional1, Additional2, Additional3],
-      img: PhotoURl,
     };
-
-    fetch("http://localhost:9000/product", {
-      method: "POST",
+    fetch(`http://localhost:9000/product/${_id}`, {
+      method: "PUT",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(NewProduct),
+      body: JSON.stringify(updateProduct),
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        if (data.insertedId) {
+        if (data.modifiedCount > 0) {
           Swal.fire({
             title: "success",
             text: "Do you want to continue",
@@ -49,13 +65,15 @@ const AddItem = () => {
             confirmButtonText: "Cool",
           });
         }
+        navigate('/dashboard/manage_all_product')
       });
   };
+  //
   return (
     <div>
       <div className="FormStyle">
-        <h5 className="formHeader">Add New Product</h5>
-        <form onSubmit={addHandleSubmit}>
+        <h5 className="formHeader">Update Product</h5>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div>
             <div className="space-y-12">
               <div className="border-b border-gray-900/10 pb-12">
@@ -67,7 +85,8 @@ const AddItem = () => {
                     <div className="mt-2">
                       <input
                         type="text"
-                        name="ProductName"
+                        defaultValue={productName}
+                        {...register("productName", { required: true })}
                         placeholder="Product Name"
                         className="block w-full rounded-md border-0 p-1.5  sm:text-sm sm:leading-6"
                       />
@@ -81,8 +100,9 @@ const AddItem = () => {
                     <div className="mt-2">
                       <input
                         type="text"
+                        defaultValue={price}
+                        {...register("price", { required: true })}
                         placeholder="Price"
-                        name="Price"
                         className="block w-full rounded-md border-0 p-1.5 text-gray-900 sm:text-sm sm:leading-6"
                       />
                     </div>
@@ -95,7 +115,8 @@ const AddItem = () => {
                     <div className="mt-2">
                       <input
                         type="text"
-                        name="Available"
+                        defaultValue={availableQuantity}
+                        {...register("availableQuantity", { required: true })}
                         placeholder="Product Quantity"
                         className="block w-full rounded-md border-0 p-1.5 text-gray-900 sm:text-sm sm:leading-6"
                       />
@@ -109,7 +130,8 @@ const AddItem = () => {
                     <div className="mt-2">
                       <input
                         type="text"
-                        name="Rating"
+                        defaultValue={rating}
+                        {...register("rating", { required: true })}
                         placeholder="Rating"
                         className="block w-full rounded-md border-0 p-1.5 text-gray-900 sm:text-sm sm:leading-6"
                       />
@@ -123,7 +145,8 @@ const AddItem = () => {
                     <div className="mt-2">
                       <input
                         type="text"
-                        name="Category"
+                        defaultValue={category}
+                        {...register("category", { required: true })}
                         placeholder="Product Category"
                         className="block w-full rounded-md border-0 p-1.5 text-gray-900 sm:text-sm sm:leading-6"
                       />
@@ -137,7 +160,8 @@ const AddItem = () => {
                     <div className="mt-2">
                       <input
                         type="text"
-                        name="Dimensions"
+                        defaultValue={dimensions}
+                        {...register("dimensions", { required: true })}
                         placeholder="Dimensions"
                         className="block w-full rounded-md border-0 p-1.5 text-gray-900 sm:text-sm sm:leading-6"
                       />
@@ -151,7 +175,7 @@ const AddItem = () => {
                     <div className="mt-2">
                       <input
                         type="text"
-                        name="Color"
+                        {...register("color", { required: true })}
                         placeholder="Product Color"
                         className="block w-full rounded-md border-0 p-1.5 text-gray-900 sm:text-sm sm:leading-6"
                       />
@@ -168,7 +192,8 @@ const AddItem = () => {
                     <div className="mt-2">
                       <input
                         type="text"
-                        name="Weight"
+                        defaultValue={weight}
+                        {...register("weight", { required: true })}
                         placeholder="Weight "
                         className="block w-full rounded-md border-0 p-1.5 text-gray-900  sm:text-sm sm:leading-6"
                       />
@@ -185,7 +210,8 @@ const AddItem = () => {
                     <div className="mt-2">
                       <input
                         type="text"
-                        name="PhotoURl"
+                        defaultValue={img}
+                        {...register("img", { required: true })}
                         placeholder="Enter Photo URl"
                         className="block w-full rounded-md border-0 p-1.5 text-gray-900 sm:text-sm sm:leading-6"
                       />
@@ -202,7 +228,8 @@ const AddItem = () => {
                     <div className="mt-2">
                       <input
                         type="text"
-                        name="PhotoURl1"
+                        defaultValue={additionalImages[0]}
+                        {...register("Additional1", { required: true })}
                         placeholder="Enter Photo URl"
                         className="block w-full rounded-md border-0 p-1.5 text-gray-900 sm:text-sm sm:leading-6"
                       />
@@ -219,7 +246,8 @@ const AddItem = () => {
                     <div className="mt-2">
                       <input
                         type="text"
-                        name="PhotoURl2"
+                        defaultValue={additionalImages[1]}
+                        {...register("Additional2", { required: true })}
                         placeholder="Enter Photo URl"
                         className="block w-full rounded-md border-0 p-1.5 text-gray-900 sm:text-sm sm:leading-6"
                       />
@@ -236,7 +264,8 @@ const AddItem = () => {
                     <div className="mt-2">
                       <input
                         type="text"
-                        name="PhotoURl3"
+                        defaultValue={additionalImages[2]}
+                        {...register("Additional3", { required: true })}
                         placeholder="Enter Photo URl"
                         className="block w-full rounded-md border-0 p-1.5 text-gray-900 sm:text-sm sm:leading-6"
                       />
@@ -249,7 +278,7 @@ const AddItem = () => {
             <div className="mt-6 flex items-center justify-end gap-x-6">
               <input
                 type="submit"
-                value="Add Product"
+                value="Update Product"
                 className="rounded-md cursor-pointer bg-gray-600 px-3 py-2 text-sm font-semibold text-white shadow-sm w-full"
               />
             </div>
@@ -260,4 +289,4 @@ const AddItem = () => {
   );
 };
 
-export default AddItem;
+export default UpdateProduct;

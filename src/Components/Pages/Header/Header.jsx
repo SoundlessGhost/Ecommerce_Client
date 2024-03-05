@@ -32,7 +32,7 @@ const Header = () => {
   const [isHomeOpen, setHomeOpen] = useState(false);
   const [isPagesOpen, setPagesOpen] = useState(false);
   const [isShopOpen, setShopOpen] = useState(false);
-  const [isBlogsOpen, setBlogsOpen] = useState(false);
+  // const [isBlogsOpen, setBlogsOpen] = useState(false);
   const [isMenuOpen, setMenuOpen] = useState(false);
 
   const handleMouseEnter = (menu) => {
@@ -46,9 +46,9 @@ const Header = () => {
       case "Shop":
         setShopOpen(true);
         break;
-      case "Blogs":
-        setBlogsOpen(true);
-        break;
+      // case "Blogs":
+      //   setBlogsOpen(true);
+      //   break;
       case "Menu":
         setMenuOpen(true);
         break;
@@ -68,9 +68,9 @@ const Header = () => {
       case "Shop":
         setShopOpen(false);
         break;
-      case "Blogs":
-        setBlogsOpen(false);
-        break;
+      // case "Blogs":
+      //   setBlogsOpen(false);
+      //   break;
       case "Menu":
         setMenuOpen(false);
         break;
@@ -177,7 +177,7 @@ const Header = () => {
               )}
             </div>
             {/*  */}
-            <div
+            {/* <div
               className="header-item ml-10"
               onMouseEnter={() => handleMouseEnter("Blogs")}
               onMouseLeave={() => handleMouseLeave("Blogs")}
@@ -198,7 +198,7 @@ const Header = () => {
                   </ul>
                 </div>
               )}
-            </div>
+            </div> */}
             {/*  */}
             <Link to="dashboard/carts">
               <div className="flex items-center">

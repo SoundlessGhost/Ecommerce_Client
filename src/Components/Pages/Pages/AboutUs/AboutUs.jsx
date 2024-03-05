@@ -1,5 +1,3 @@
-// import React from 'react';
-
 import { Helmet } from "react-helmet-async";
 import Progress from "../../ProductShowcase/Progress/Progress";
 import AboutUsParallax from "./AboutUsParallax/AboutUsParallax";
@@ -7,9 +5,9 @@ import AboutUsParallax from "./AboutUsParallax/AboutUsParallax";
 const AboutUs = () => {
   return (
     <div>
-        <Helmet>
-            <title>Snake Eye || About</title>
-        </Helmet>
+      <Helmet>
+        <title>Snake Eye || About</title>
+      </Helmet>
       <div className="about-us bg-fixed">
         <div>
           <p className="text-center">About US</p>

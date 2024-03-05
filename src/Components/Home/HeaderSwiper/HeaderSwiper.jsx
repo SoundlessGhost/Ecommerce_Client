@@ -5,7 +5,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Autoplay } from "swiper/modules";
 
-const HeaaderSwiper = () => {
+const HeaderSwiper = () => {
   return (
     <div>
       <Swiper
@@ -15,7 +15,7 @@ const HeaaderSwiper = () => {
         }}
         navigation={true}
         loop={true}
-        modules={[Navigation,Autoplay]}
+        modules={[Navigation, Autoplay]}
         className="mySwiper"
       >
         <SwiperSlide>
@@ -65,4 +65,4 @@ const HeaaderSwiper = () => {
   );
 };
 
-export default HeaaderSwiper;
+export default HeaderSwiper;

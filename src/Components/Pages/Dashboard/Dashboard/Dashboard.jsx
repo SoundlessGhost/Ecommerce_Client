@@ -191,7 +191,7 @@ const Dashboard = () => {
             <li>
               <div onClick={handleLogOut} className="flex ">
                 <img
-                  className="w-[20px] mr-1"
+                  className="w-[20px] -mr-1"
                   src="https://cdn-icons-png.flaticon.com/128/3168/3168315.png"
                 />
                 <p>Log Out</p>

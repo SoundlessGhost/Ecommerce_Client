@@ -48,7 +48,6 @@ const ShowPerItem = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
           if (data.insertedId) {
             refetch();
             toast("product add successfully");

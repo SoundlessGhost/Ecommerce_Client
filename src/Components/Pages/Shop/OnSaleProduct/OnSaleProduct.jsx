@@ -1,28 +1,17 @@
-// import React from 'react';
-
-import axios from "axios";
-import { useState } from "react";
 import ItemReactTab from "../../../Home/ItemReactTab/ItemReactTab";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import useProduct from "../../../Hooks/useProduct";
 
 const OnSaleProduct = () => {
-  const [products, setProducts] = useState([]);
-  axios
-    .get("http://localhost:9000/product")
-    .then((res) => {
-      setProducts(res.data);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  const [product] = useProduct();
 
   return (
     <>
-    <Helmet>
+      <Helmet>
         <title>Snake Eye || On Sale Product</title>
       </Helmet>
-      {products.slice(26, 27).map((product) => (
+      {product.slice(25, 26).map((product) => (
         <div key={product._id} className="pt-40 pb-20">
           <div className="flex">
             <div className="smallImg">
@@ -85,13 +74,19 @@ const OnSaleProduct = () => {
         </div>
       ))}
       <div className="grid grid-cols-4">
-        {products.slice(10, 14).map((item) => (
+        {product.slice(10, 14).map((item) => (
           <div key={item._id} className="productContainer pl-7">
-          <Link to={`/product/${item._id}`}><img className="h-[330px] w-[305px] rounded-md" src={item.img} alt="" /></Link>
-          <div className="mb-8 mt-4 px-2">
-            <p>Product Name - {item.productName}</p>
+            <Link to={`/product/${item._id}`}>
+              <img
+                className="h-[330px] w-[305px] rounded-md"
+                src={item.img}
+                alt=""
+              />
+            </Link>
+            <div className="mb-8 mt-4 px-2">
+              <p>Product Name - {item.productName}</p>
+            </div>
           </div>
-        </div>
         ))}
       </div>
     </>

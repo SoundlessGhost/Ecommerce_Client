@@ -1,11 +1,10 @@
-import HeaaderSwiper from "../HeaaderSwiper/HeaaderSwiper";
 import Product from "../Product/Product";
 import ImgParallax from "../Parallax/Parallax";
 import Carousel from "../Carousel/Carousel";
 import RelativePdt from "../RelativePdt/RelativePdt";
 import Blogs from "../Blogs/Blogs";
 import { Helmet } from "react-helmet-async";
-// import Drawer from "../Drawer/Drawer";
+import HeaderSwiper from "../HeaderSwiper/HeaderSwiper";
 
 const Home = () => {
   return (
@@ -13,7 +12,7 @@ const Home = () => {
       <Helmet>
         <title>Snake Eye || Home</title>
       </Helmet>
-      <HeaaderSwiper></HeaaderSwiper>
+      <HeaderSwiper></HeaderSwiper>
       <Product></Product>
       <ImgParallax></ImgParallax>
       <Carousel></Carousel>

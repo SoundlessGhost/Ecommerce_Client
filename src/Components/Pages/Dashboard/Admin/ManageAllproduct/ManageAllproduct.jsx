@@ -1,16 +1,11 @@
-// import React from 'react';
-
-import axios from "axios";
-import { useState } from "react";
 import useCart from "../../../../Hooks/useCart";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
+import useProduct from "../../../../Hooks/useProduct";
 
 const ManageAllProduct = () => {
   const [, refetch] = useCart();
-  const [products, setProducts] = useState([]);
-  axios
-    .get("http://localhost:9000/product")
-    .then((data) => setProducts(data.data));
+  const [products] = useProduct();
 
   const handleDeleteMethod = (id) => {
     Swal.fire({
@@ -42,10 +37,6 @@ const ManageAllProduct = () => {
     });
   };
 
-  //   TODO update handler
-  const handleUpdate = (id) => {
-    console.log(id);
-  };
   return (
     <div>
       <p className="priceField">Manage All Product {products.length}</p>
@@ -97,12 +88,13 @@ const ManageAllProduct = () => {
                   <small>Quantity - {item.availableQuantity} Pieces</small>
                 </td>
                 <td>
-                  <img
-                    onClick={() => handleUpdate(item._id)}
-                    className="w-[20px] cursor-pointer"
-                    src="https://cdn-icons-png.flaticon.com/128/2546/2546705.png"
-                    alt=""
-                  />
+                  <Link to={`/dashboard/updated_product/${item._id}`}>
+                    <img
+                      className="w-[20px] cursor-pointer"
+                      src="https://cdn-icons-png.flaticon.com/128/2546/2546705.png"
+                      alt=""
+                    />
+                  </Link>
                 </td>
                 <td>
                   <img

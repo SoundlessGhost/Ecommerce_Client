@@ -22,7 +22,7 @@ const Register = () => {
 
   const onSubmit = (data) => {
     createUser(data.email, data.password)
-      .then((result) => {
+      .then(() => {
         updateUserProfile(data.name, data.photoURL)
           .then(() => {
             const savedUser = { name: data.name, email: data.email };

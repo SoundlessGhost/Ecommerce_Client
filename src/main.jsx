@@ -32,6 +32,7 @@ import PaymentHistory from "./Components/Pages/Dashboard/PaymentHistory/PaymentH
 import AllUsers from "./Components/Pages/Dashboard/Admin/AllUsers/AllUsers";
 import ManageAllProduct from "./Components/Pages/Dashboard/Admin/ManageAllproduct/ManageAllproduct";
 import AddItem from "./Components/Pages/Dashboard/Admin/AddItem/AddItem";
+import UpdateProduct from "./Components/Pages/Dashboard/Admin/UpdateProduct/UpdateProduct";
 
 const queryClient = new QueryClient();
 
@@ -147,6 +148,12 @@ const router = createBrowserRouter([
       {
         path: "manage_all_product",
         element: <ManageAllProduct></ManageAllProduct>,
+      },
+      {
+        path: "updated_product/:id",
+        element: <UpdateProduct></UpdateProduct>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:9000/product/${params.id}`),
       },
     ],
   },

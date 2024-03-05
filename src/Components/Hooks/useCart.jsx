@@ -3,7 +3,6 @@ import useAxiosSecure from "./useAxiosSecure";
 import useAuth from "./useAuth";
 
 const useCart = () => {
-  // const token = localStorage.getItem("accessToken");
   const [axiosSecure] = useAxiosSecure();
   const { user } = useAuth();
   const { refetch, data: cart = [] } = useQuery({
@@ -19,8 +18,9 @@ const useCart = () => {
 
 export default useCart;
 
-
 //?
+
+// const token = localStorage.getItem("accessToken");
 // queryFn: async () => {
 //   const res = await fetch(
 //     `http://localhost:9000/carts?email=${user?.email}`,
